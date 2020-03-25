@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col s12">
+        <div class = "card">
+        <div class="card-content white-text">
+        <div class = "row">
+        <div class ="col s5">
+            <form #studentForm ="ngForm" (ngSubmit) ="onSubmit(studentForm)">
+            <input type = "hidden" name ="_id" #_id ="ngModel" [(ngModel)] ="studentService.selectedStudent._id"/>
+        <div class = "row">
+            <h4>ITIS- 6177 System Integration Student Details Form <span class ="material-icons">people</span></h4>
+        </div>
+        <div class = "row">
+
+        </div>
+        <div class ="row">
+            <div class ="input-field col s12">
+                <input type ="text" name ="firstName" #name="ngModel" [(ngModel)] = "studentService.selectedStudent.firstName" placeholder =" Enter your First Name" required/>
+                <label>First Name :
+                    <label class ="red-text">*</label>
+                </label>
+            </div>
+        </div>
+        <div class ="row">
+            <div class ="input-field col s12">
+                <input type ="text" name ="lastName" #name="ngModel" [(ngModel)] = "studentService.selectedStudent.lastName" placeholder = "Enter your Last Name"/>
+                <label>Last Name :
+                    <label class ="red-text">*</label>
+                </label>
+            </div>
+        </div>
+        <div class ="row">
+            <div class ="input-field col s12">
+                <input type ="text" name ="degree" #name="ngModel" [(ngModel)] = "studentService.selectedStudent.degree" placeholder = "Enter your Degree"/>
+                <label>Degree :
+                    <label class ="red-text">*</label>
+                </label>
+            </div>
+        </div>
+        <div class ="row">
+            <div class ="input-field col s12">
+                <input type ="text" name ="program" #name="ngModel" [(ngModel)] = "studentService.selectedStudent.program" placeholder = "Enter your Program"/>
+                <label>Program :
+                    <label class ="red-text">*</label>
+                </label>
+            </div>
+        </div>
+        <div class ="row">
+            <div class ="input-field col s12">
+                <input type ="text" name ="graduationYear" #name="ngModel" [(ngModel)] = "studentService.selectedStudent.graduationYear" placeholder = "Enter your Graduation Year"/>
+                <label>Graduation Year :
+                </label>
+            </div>
+        </div>
+        <div class ="row">
+            <div class ="input-field col s12">
+                <input type ="text" name ="emailAddress" #name="ngModel" [(ngModel)] = "studentService.selectedStudent.emailAddress" placeholder = "Enter your Email Address"/>
+                <label>Email Address :
+                    <label class ="red-text">*</label>
+                </label>
+            </div>
+        </div>
+        <div class ="row">
+            <div class ="input-field col s12">
+                <button class ="btn btn-custom right" type = "button" (click) ="resetForm(studentForm)">Reset</button>
+                <button class ="btn btn-custom right" type = "submit" [disabled] = "!studentForm.valid">Submit</button>
+            </div>
+        </div>
+        </form>
+    </div>
+        <div class ="col s7">
+            <div class = "row">
+
+            </div>
+            <table class = "resonsive-table highlight">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Degree</th>
+                        <th>Program</th>
+                        <th>Graduation Year</th>
+                        <th>Email Address</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tr *ngFor ="let std of studentService.students">
+                    <td>{{std.firstName}}</td>
+                    <td>{{std.lastName}}</td>
+                    <td>{{std.degree}}</td>
+                    <td>{{std.program}}</td>
+                    <td>{{std.graduationYear}}</td>
+                    <td>{{std.emailAddress}}</td>
+                    <td>
+                        <a class ="action-btn" (click) ="onEdit(std)">
+                            <i class ="material-icons">edit</i>
+                        </a>
+                        <a class ="action-btn" (click) = "onDelete(std._id,studentForm)">
+                            <i class ="material-icons">delete</i>
+                        </a>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
