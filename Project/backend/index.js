@@ -21,7 +21,7 @@ const options ={
         "url": "https://github.com/tejhaswini",
         "email": "tatluri@uncc.edu"
       },
-      "servers" : ["http://localhost:3000/"]
+      "servers" : ["http://167.172.244.188:3000/"]
     }
   },
       apis: ["./controllers/studentController.js"]
