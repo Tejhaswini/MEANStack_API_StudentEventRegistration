@@ -11,7 +11,7 @@ export class StudentService {
   selectedStudent : Student;
   selectedStudentPatch : Student;
   students : Student[];
-  readonly baseURL = 'http://167.172.244.188:3000/students/';
+  readonly baseURL = 'http://167.172.244.188:3002/students/';
 
   constructor(public http : HttpClient) { }
 

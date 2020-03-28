@@ -21,7 +21,7 @@ const options ={
         "url": "https://github.com/tejhaswini",
         "email": "tatluri@uncc.edu"
       },
-      "servers" : ["http://167.172.244.188:3000/"]
+      "servers" : ["http://167.172.244.188:3002/"]
     }
   },
       apis: ["./controllers/studentController.js"]
@@ -31,7 +31,7 @@ const swaggerSpec = swaggerJsDoc(options);
 app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/students',studentController);
 
-app.listen(3000, () => console.log('Server started at port : 3000'));
+app.listen(3000, () => console.log('Server started at port : 3002'));
 
 
  
