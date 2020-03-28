@@ -7,7 +7,7 @@ const { mongoose } = require('./db.js');
 var studentController = require('./controllers/studentController.js');
 
 var app = express();
-app.use(cors({origin: 'http://167.172.244.188:4200'}));
+app.use(cors({origin: 'http://67.207.80.168:4200'}));
 app.use(bodyParser.json());
 
 const options ={
@@ -21,7 +21,7 @@ const options ={
         "url": "https://github.com/tejhaswini",
         "email": "tatluri@uncc.edu"
       },
-      "servers" : ["http://167.172.244.188:3002/"]
+      "servers" : ["http://67.207.80.168:3002/"]
     }
   },
       apis: ["./controllers/studentController.js"]
