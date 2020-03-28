@@ -31,7 +31,7 @@ const swaggerSpec = swaggerJsDoc(options);
 app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/students',studentController);
 
-app.listen(3000, () => console.log('Server started at port : 3002'));
+app.listen(3002, () => console.log('Server started at port : 3002'));
 
 
  
