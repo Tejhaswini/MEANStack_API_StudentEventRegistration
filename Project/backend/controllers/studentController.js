@@ -148,8 +148,9 @@ router.post('/',(req,res) => {
   * /students/{id}:
   *   put:
   *     tags:
-  *       - students/{id}
-  *     summary: Update a Single Student
+  *       - students
+  *     name: Update student profile
+  *     summary: Update Single Student
   *     security:
   *       - bearerAuth: []
   *     consumes:
@@ -157,16 +158,26 @@ router.post('/',(req,res) => {
   *     produces:
   *       - application/json
   *     parameters:
-  *       - name: id
+  *       - name: body
   *         in: body
   *         description: Fields for the Student resource
   *         schema:
-  *           type: array
-  *           $ref: '#/definitions/Student'
-  *         required: true
-  *     responses:
-  *       200:
-  *         description: Student Data Successfully Updated
+  *           type: object
+  *           properties: 
+  *              id:
+  *                 type: string
+  *              firstName:
+  *                 type: string
+  *              lastName:
+  *                 type: string
+  *              degree:
+  *                 type: string
+  *              program:
+  *                 type: string
+  *              graduationYear:
+  *                 type: integer
+  *              emailAddress:
+  *                 type: string  
   */
 router.put('/:id',(req,res) =>{
     if(!ObjectId.isValid(req.params.id))
@@ -191,7 +202,7 @@ router.put('/:id',(req,res) =>{
   *   patch:
   *     tags:
   *       - students
-  *     summary: edit student with specific firstName
+  *     summary: Edit student with specific firstName
   *     security:
   *       - bearerAuth: []
   *     consumes:
