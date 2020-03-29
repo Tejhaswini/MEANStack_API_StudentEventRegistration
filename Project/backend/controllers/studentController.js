@@ -171,14 +171,17 @@ router.post('/',(req,res) => {
   *     produces:
   *       - application/json
   *     parameters:
+  *       - name: id
+  *         description : student's Id
+  *         in: path
+  *         required: true
+  *         type: string
   *       - name: body
   *         in: body
   *         description: Fields for the Student resource
   *         schema:
   *           type: object
   *           properties: 
-  *              id:
-  *                 type: string
   *              firstName:
   *                 type: string
   *              lastName:
@@ -224,14 +227,20 @@ router.put('/:id',(req,res) =>{
   *       - application/json
   *     parameters:
   *       - name: id
-  *         type: string
-  *         description: body required
-  *         in: body
-  *         title: title
-  *         detail: detail
+  *         description: Student's Id
+  *         in: path
   *         required: true
+  *         type: string
+  *       - name: body
+  *         in: body
+  *         description: Update part of Student Data
   *         schema:
-  *           $ref: '#/definitions/Student'
+  *           type: object
+  *           properties:
+  *              program:
+  *                 type: string
+  *              graduationYear:
+  *                 type: string     
   *     responses:
   *       200:
   *         description: List of Student object
