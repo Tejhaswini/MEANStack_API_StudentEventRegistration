@@ -14,7 +14,7 @@ const options ={
     definition :{
       info :
         {
-      "title": "Student API",
+      "title": "Student Details API",
       "description": "Notes API documentation.",
       "contact": {
         "name": "Tejaswini Atluri",

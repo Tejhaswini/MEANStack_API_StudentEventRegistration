@@ -52,12 +52,17 @@ var { Student } = require('../models/student');
  *   get:
  *     tags:
  *       - students
- *     description: Returns all students
+ *     summary: List all Students
+ *     description: List all students
  *     produces:
  *       - application/json
  *     responses:
  *       200:
  *         description: An array of students
+ *       404:
+ *         description: No Students
+ *       500: 
+ *         description: Problem communicating with db
  *         schema:
  *           $ref: '#/definitions/Student'
  */
@@ -75,19 +80,23 @@ router.get('/',(req,res) => {
   *   get:
   *     tags:
   *       - students
-  *     summary: Return students based on id
-  *     description: Return students based on id
+  *     summary: Get Student Profile
+  *     description: Get Student Profile
   *     produces:
   *       - application/json
   *     parameters:
   *       - name: id
-  *         description: student's id
+  *         description: Student's Id
   *         in: path
   *         required: true
   *         type: string
   *     responses:
   *       200:
-  *         description: A single student
+  *         description: A Single Student
+  *       404:
+  *         description: No Student with that Id
+  *       500:
+  *         description: Problem communicating with db
   *         schema:
   *           $ref: '#/definitions/Student'
   */
@@ -108,7 +117,7 @@ router.get('/:id',(req,res) => {
  *   post:
  *     tags:
  *       - students
- *     summary: Insert new student record in database
+ *     summary: Add New Student
  *     security:
  *       - bearerAuth: []
  *     consumes:
@@ -126,7 +135,11 @@ router.get('/:id',(req,res) => {
  *         required: true
  *     responses:
  *       200:
- *         description: list of all students with newly inserted
+ *         description: Student is added to the db
+ *       404:
+ *         description: No Student in db with that Id
+ *       500:
+ *         description: Problem communicating with db
  */
 router.post('/',(req,res) => {
     var std = new Student({
@@ -149,8 +162,8 @@ router.post('/',(req,res) => {
   *   put:
   *     tags:
   *       - students
-  *     name: Update student profile
-  *     summary: Update Single Student
+  *     name: Update Student Profile
+  *     summary: Update Student Profile
   *     security:
   *       - bearerAuth: []
   *     consumes:
@@ -202,7 +215,7 @@ router.put('/:id',(req,res) =>{
   *   patch:
   *     tags:
   *       - students
-  *     summary: Edit student with specific firstName
+  *     summary: Update Degree Program
   *     security:
   *       - bearerAuth: []
   *     consumes:
@@ -221,7 +234,11 @@ router.put('/:id',(req,res) =>{
   *           $ref: '#/definitions/Student'
   *     responses:
   *       200:
-  *         description: List of user object
+  *         description: List of Student object
+  *       404:
+  *         description: No Student in db with that Id
+  *       500:
+  *         description: Problem communicating with db
   *         schema:
   *           $ref: '#/definitions/affectedResponse'
   */
@@ -244,7 +261,7 @@ router.patch('/:id',(req,res) =>{
   *   delete:
   *     tags:
   *       - students
-  *     summary: delete student with specific id
+  *     summary: Delete Student
   *     security:
   *       - bearerAuth: []
   *     consumes:
@@ -253,13 +270,17 @@ router.patch('/:id',(req,res) =>{
   *       - application/json
   *     parameters:
   *       - name: id
-  *         description: student's id
+  *         description: Student's Id
   *         in: path
   *         required: true
   *         type: string
   *     responses:
   *       200:
-  *         description: Deleted Successfully
+  *         description: Student Deleted Successfully
+  *       404:
+  *         description: No Student in db with that Id
+  *       500:
+  *         description: Problem communicating with db
   */
 router.delete('/:id', (req,res) => {
     if(!ObjectId.isValid(req.params.id))
