@@ -193,8 +193,15 @@ router.post('/',(req,res) => {
   *              graduationYear:
   *                 type: integer
   *              emailAddress:
-  *                 type: string  
-  */
+  *                 type: string
+  *     responses:
+  *       200:
+  *         description: Student is added to the db
+  *       404:
+  *         description: No Student in db with that Id
+  *       500:
+  *         description: Problem communicating with db
+  */ 
 router.put('/:id',(req,res) =>{
     if(!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
